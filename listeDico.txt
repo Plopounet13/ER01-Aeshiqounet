@@ -1,0 +1,11 @@
+dico/CH-dic.txt
+dico/DE-dic.txt
+dico/DK-dic.txt
+dico/EN-dic.txt
+dico/ES-dic.txt
+dico/FR-dic.txt
+dico/IT-dic.txt
+dico/NL-dic.txt
+dico/NO-dic.txt
+dico/UK-dic.txt
+dico/US-dic.txt
