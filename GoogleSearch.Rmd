@@ -9,12 +9,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ```{r echo=FALSE}
-df_ch = read.csv("ER01-Aeshiqounet/saves/concat/CH-dic.txt.out")
+df_ch = read.csv("Saves/concat/CH-dic.txt.out")
 df_ch$lang = "CH"
 library(ggplot2)
-df_dk = read.csv("ER01-Aeshiqounet/saves/concat/DK-dic.txt.out")
+df_dk = read.csv("saves/concat/DK-dic.txt.out")
 df_dk$lang = "DK"
-df_uk = read.csv("ER01-Aeshiqounet/saves/concat/UK-dic.txt.out")
+df_uk = read.csv("saves/concat/UK-dic.txt.out")
 df_uk$lang = "UK"
 
 total <- rbind(df_ch,df_dk)
@@ -26,31 +26,31 @@ ggplot(total_petit, aes(x = tailleMot, y = nbResults, color=lang)) + geom_point(
 total_petit_2 = total[total$nbResults < 100000000,]
 ggplot(total_petit_2, aes(x = tailleMot, y = nbResults, color=lang)) + geom_point()
 
-df_de = read.csv("ER01-Aeshiqounet/saves/concat/DE-dic.txt.out")
+df_de = read.csv("saves/concat/DE-dic.txt.out")
 df_de$lang = "DE"
 total <- rbind(total,df_de)
 
-df_en = read.csv("ER01-Aeshiqounet/saves/concat/EN-dic.txt.out")
+df_en = read.csv("saves/concat/EN-dic.txt.out")
 df_en$lang = "EN"
 total <- rbind(total,df_en)
 
-df_es = read.csv("ER01-Aeshiqounet/saves/concat/ES-dic.txt.out")
+df_es = read.csv("saves/concat/ES-dic.txt.out")
 df_es$lang = "ES"
 total <- rbind(total,df_es)
 
-df_fr = read.csv("ER01-Aeshiqounet/saves/concat/FR-dic.txt.out")
+df_fr = read.csv("saves/concat/FR-dic.txt.out")
 df_fr$lang = "FR"
 total <- rbind(total,df_fr)
 
-df_it = read.csv("ER01-Aeshiqounet/saves/concat/IT-dic.txt.out")
+df_it = read.csv("saves/concat/IT-dic.txt.out")
 df_it$lang = "IT"
 total <- rbind(total,df_it)
 
-df_nl = read.csv("ER01-Aeshiqounet/saves/concat/NL-dic.txt.out")
+df_nl = read.csv("saves/concat/NL-dic.txt.out")
 df_nl$lang = "NL"
 total <- rbind(total,df_nl)
 
-df_us = read.csv("ER01-Aeshiqounet/saves/concat/US-dic.txt.out")
+df_us = read.csv("saves/concat/US-dic.txt.out")
 df_us$lang = "US"
 total <- rbind(total,df_us)
 
@@ -58,7 +58,7 @@ library(plyr)
 summ = ddply(total,c("tailleMot","lang"),summarize,num = length(nbResults), mean_results = mean(nbResults), sd_results = sd(nbResults));
 summ_us = ddply(df_us,c("tailleMot","lang"),summarize,num = length(nbResults), mean_results = mean(nbResults), sd_results = sd(nbResults));
 
-df_no = read.csv("ER01-Aeshiqounet/saves/concat/NO-dic.txt.out")
+df_no = read.csv("saves/concat/NO-dic.txt.out")
 df_no$lang = "NO"
 total <- rbind(total,df_no)
 
