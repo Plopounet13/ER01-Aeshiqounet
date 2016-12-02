@@ -10,13 +10,14 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Google search results comparison
 Our goal here was to observe the variation of the number of results of a single word google search depending of the size of the word.
 
-Firstly we sent 300 request for each of the eleven languages we compared and extracted the number of results from each answer.
-
+Firstly we sent 300 request for each of the eleven languages we compared and extracted the number of results from each answer. We only chose words without accents randomly from dictionnaries for each langage
 
 We then compared it as a colored dot cloud and then computed the mean of number of results for each request size.
 
 Our main observation was that for every langague there are really high spikes for small words. And that the number of results seems to decrease from length 3 to 10 and then looks random.
 
+
+##Comparison over 3 langages
 ```{r}
 df_ch = read.csv("saves/concat/CH-dic.txt.out")
 df_ch$lang = "CH"
@@ -29,8 +30,14 @@ df_uk$lang = "UK"
 total <- rbind(df_ch,df_dk)
 total <- rbind(total,df_uk)
 ggplot(total, aes(x = tailleMot, y = nbResults, color=lang)) + geom_point()
+```
+Here it is difficult to read the data since spikes make data more compact. We should try looking at just smaller values.
+```{r}
 total_petit = total[total$nbResults < 5000000000,]
 ggplot(total_petit, aes(x = tailleMot, y = nbResults, color=lang)) + geom_point()
+```
+
+```{r}
 total_petit_2 = total[total$nbResults < 100000000,]
 ggplot(total_petit_2, aes(x = tailleMot, y = nbResults, color=lang)) + geom_point()
 
